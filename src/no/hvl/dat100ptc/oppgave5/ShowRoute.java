@@ -69,6 +69,7 @@ public class ShowRoute extends EasyGraphics {
 		setColor(0, 255, 0);
 		
 		for(int i = 0; i < gpspoints.length; i++) {
+			
 			double xmin = GPSUtils.findMin(GPSUtils.getLongitudes(gpspoints));
 			double ymin = GPSUtils.findMin(GPSUtils.getLatitudes(gpspoints));
 			double x = (gpspoints[i].getLongitude() - xmin) * xstep();
@@ -88,14 +89,27 @@ public class ShowRoute extends EasyGraphics {
 	public void showStatistics() {
 
 		int TEXTDISTANCE = 20;
+		int WEIGHT = 80;
 
 		setColor(0,0,0);
 		setFont("Courier",12);
 		
-		// TODO - START
+		String time = String.format("%-15s:%11s", "Total Time", GPSUtils.formatTime(gpscomputer.totalTime()));
+		String distance = String.format("%-15s:%11s km", "Total distance", GPSUtils.formatDouble(gpscomputer.totalDistance()/1000));
+		String elevation = String.format("%-15s:%11s m", "Total elevation", GPSUtils.formatDouble(gpscomputer.totalElevation()));
+		String max_speed = String.format("%-15s:%11s km/t", "Max speed", GPSUtils.formatDouble(gpscomputer.maxSpeed()));
+		String average_speed = String.format("%-15s:%11s km/t", "Average speed", GPSUtils.formatDouble(gpscomputer.averageSpeed()));
+		String kcal = String.format("%-15s:%11s kcal", "Energy", GPSUtils.formatDouble(gpscomputer.totalKcal(WEIGHT)));
 		
+		int x = 25; 
 		
-		// TODO - SLUTT;
+		drawString(time, x,TEXTDISTANCE);
+		drawString(distance, x, 2 * TEXTDISTANCE);
+		drawString(elevation, x, 3 * TEXTDISTANCE);
+		drawString(max_speed, x, 4 * TEXTDISTANCE);
+		drawString(average_speed, x, 5 * TEXTDISTANCE);
+		drawString(kcal, x, 6 * TEXTDISTANCE);
+		
 	}
 
 }

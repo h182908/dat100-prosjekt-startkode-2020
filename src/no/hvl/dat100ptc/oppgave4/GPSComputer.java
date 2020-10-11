@@ -132,7 +132,6 @@ public class GPSComputer {
 	public void displayStatistics() {
 
 		System.out.println("==============================================");
-
 		System.out.println(String.format("%-15s:%11s", "Total Time", GPSUtils.formatTime(totalTime())));
 		System.out.println(String.format("%-15s:%11s km", "Total distance", GPSUtils.formatDouble(totalDistance()/1000)));
 		System.out.println(String.format("%-15s:%11s m", "Total elevation", GPSUtils.formatDouble(totalElevation())));
