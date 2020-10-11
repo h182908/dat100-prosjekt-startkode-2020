@@ -127,6 +127,23 @@ public class GPSComputer {
 		return kcal(weight, totalTime(), averageSpeed());	
 	}
 	
+	public double[] climbs() {
+		double[] climbs = new double[gpspoints.length - 1];
+		
+		for(int i = 0; i < gpspoints.length - 1; i++) {
+			
+			double delta_elevation = gpspoints[i + 1].getElevation() - gpspoints[i].getElevation();
+			
+			climbs[i] = delta_elevation/GPSUtils.distance(gpspoints[i], gpspoints[i + 1]);
+		}
+		
+		return climbs;
+	}
+	
+	public double max_climb(double[] d) {
+		return GPSUtils.findMax(d);
+	}
+	
 	private static double WEIGHT = 80.0;
 	
 	public void displayStatistics() {
