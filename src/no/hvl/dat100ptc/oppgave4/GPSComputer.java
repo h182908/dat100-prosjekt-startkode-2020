@@ -134,14 +134,14 @@ public class GPSComputer {
 			
 			double delta_elevation = gpspoints[i + 1].getElevation() - gpspoints[i].getElevation();
 			
-			climbs[i] = delta_elevation/GPSUtils.distance(gpspoints[i], gpspoints[i + 1]);
+			climbs[i] = delta_elevation/GPSUtils.distance(gpspoints[i], gpspoints[i + 1])*100;
 		}
 		
 		return climbs;
 	}
 	
-	public double max_climb(double[] d) {
-		return GPSUtils.findMax(d);
+	public double maxClimb() {
+		return GPSUtils.findMax(climbs());
 	}
 	
 	private static double WEIGHT = 80.0;

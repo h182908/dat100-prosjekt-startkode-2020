@@ -24,12 +24,12 @@ public class ShowProfile extends EasyGraphics {
 		String filename = JOptionPane.showInputDialog("GPS data filnavn: ");
 		GPSComputer gpscomputer =  new GPSComputer(filename);
 
-		gpspoints = gpscomputer.getGPSPoints();
-		
+		gpspoints = gpscomputer.getGPSPoints();		
 	}
 
 	public static void main(String[] args) {
 		launch(args);
+		
 	}
 
 	public void run() {
@@ -37,6 +37,7 @@ public class ShowProfile extends EasyGraphics {
 		int N = gpspoints.length; // number of data points
 
 		makeWindow("Height profile", 2 * MARGIN + 3 * N, 2 * MARGIN + MAXBARHEIGHT);
+		
 
 		// top margin + height of drawing area
 		showHeightProfile(MARGIN + MAXBARHEIGHT); 
